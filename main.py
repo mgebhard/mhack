@@ -15,7 +15,6 @@ class ImageEvent(ndb.Model):
     reciever = ndb.UserProperty(required=True)
     answer = ndb.StringProperty(required=True)
 
-
 def RenderTemplate(template_name, values):
     template = jinja_environment.get_template(template_name)
     return template.render(values)
