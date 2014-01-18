@@ -5,13 +5,14 @@ import logging
 import os
 from google.appengine.ext import ndb
 
-# CONSUMER_KEY = "u0Cv2bijnTUiKYgcI0ruhg"
-# CONSUMER_SECRET = "MJQypkYkc1i2ighitRv2AHgA4g72Uoi6kWJPZ2sC0"
-# OAUTH_TOKEN = "260744596-cfKGAYckxq1K5AxnJuSNZJbTlDPI7dzavMGSozLh"
-# OAUTH_SECRET = "3KoHWwmUuc4RHiv6Wo1HflMqPblFncv2wzqb3WwGjU4jz"
-
 jinja_environment = jinja2.Environment(loader=
     jinja2.FileSystemLoader(os.path.dirname(__file__)))
+
+class ImageEvent(ndb.Model):
+    photo = ndb.StringProperty(required=False)
+    user = ndb.UserProperty(required=True)
+    friend = ndb.UserProperty(required=False)
+
 
 def RenderTemplate(template_name, values):
     template = jinja_environment.get_template(template_name)
@@ -19,36 +20,20 @@ def RenderTemplate(template_name, values):
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.out.write(RenderTemplate('motion.html', {}))
+        self.response.out.write(RenderTemplate('home2.html', {}))
 
 
     def post(self):
-        word = self.request.get('word')
-        # query request the stream api
-        self.response.out.write(RenderTemplate('home.html', {}))
+        src = self.request.get('pic_src')
+        sender = users.get_current_user()
+        friend = users.User('mgebhard1995@gmail.com')
+        pic_event = ImageEvent(user=sender, 
+                           friend=friend, 
+                           photo=src)
+        user_event.put()
 
+        self.redirect('/')
 
-# class PostHandler(webapp2.RequestHandler):
-#     def get(self):
-#         self.response.out.write(RenderTemplate('post_blog.html', {'date': date.today().isoformat()}))
-
-#     def post(self):
-#         if self.request.get('pwd') == 'cseMIT17':
-            
-#             dt = datetime.strptime(date, '%Y-%m-%d')
-#             secret = False
-
-#             if self.request.get('private') == 'True':
-#                 secret = True
-
-#             new_blog = Blog(date=dt,
-#                             blog_writing=self.request.get('writing'),
-#                             photo=self.request.get('photo'),
-#                             private=secret)
-#             new_blog.put()
-#             self.redirect('/blog/%s' % dt.strftime('%m.%d.%Y'))
-
- 
 routes = [
     ('/', HomeHandler),
 ]
