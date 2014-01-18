@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+.pic{
+	width: 250px;
+	height: 250px;
+	margin: 5px;
+}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+<script>
+	var AddPhoto = function(photo) {
+	  $("#photos").append("<img class='pic' onclick='SendImg(this.src)' src=\"" + GetFlickrUrl(photo) + "\">");
+	};
+
+	var AddAllPhotos = function(photos) {
+	  for (i in photos) {
+	    AddPhoto(photos[i]);
+	  }
+	};
+	
+	var DisplayPhotos = function(flickrPhotos) {
+	   $("#photos").empty();
+	   AddAllPhotos(flickrPhotos.photos.photo);
+	};
+
+    var SendImg = function(pic_src){
+    	var input = document.createElement("input");
+		input.setAttribute("type", "hidden");
+		input.setAttribute("name", "pic_src");
+		input.setAttribute("value", pic_src);
+		var form = document.getElementById("picsend")
+		form.appendChild(input);
+		form.submit();
+
+    }
+
+	var Main = function() {
+		$('#load').click(FetchAndDisplayPhotos);
+		$('#intro').hide();
+	};
+  
+ 	$(document).ready(Main);
+</script>
+
+</head>
+<body>
+
+	{% for pictureObject in photoList %}
+		<img class='pic' src={{pictureObject.src}}>
+		<input id='guess' value='guess'>
+		<input type='button'>
+	{% endfor %}
+
+	
+</body>
+</html>
