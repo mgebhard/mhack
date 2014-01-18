@@ -56,9 +56,10 @@ class SendHandler(webapp2.RequestHandler):
 
     def post(self):
         current_user = users.get_current_user()
-        pic_src = self.request.get('pic_src')
+        answer = self.request.get('answer')
+        src = self.request.get('pic_src')
         userData = getUser(current_user)
-        friend = users.User('mgebhard1995@gmail.com')
+        friend = users.User(self.request.get('friend'))
         friendData = getUser(friend)
         if not friendData:
             friendData = Account(user=current_user, 
@@ -67,8 +68,8 @@ class SendHandler(webapp2.RequestHandler):
 
         pic_event = ImageEvent(sender=userData.key, 
                                receiver=friendData.key, 
-                               src=pic_src,
-                               answer='cat')
+                               answer=answer,
+                               src=src)
         pic_event.put()
         self.redirect('/')
 

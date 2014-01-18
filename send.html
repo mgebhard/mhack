@@ -44,7 +44,7 @@
 		// Update the search term in HTML
 		$('#searchterm').text(term);
 		$('#intro').show();
-    }
+    };
 
     var SendImg = function(pic_src){
     	var input = document.createElement("input");
@@ -52,10 +52,19 @@
 		input.setAttribute("name", "pic_src");
 		input.setAttribute("value", pic_src);
 		var form = document.getElementById("picsend")
+		
 		form.appendChild(input);
-		form.submit();
 
-    }
+		var friend = document.getElementById('send')
+		var answer = document.getElementById('ans')
+		if (friend.value != "" && answer.value != ""){
+			form.submit();
+		}
+		else{
+			alert("Make sure you have the To and answer filled out!");
+		}
+
+		};
 
 	var Main = function() {
 		$('#load').click(FetchAndDisplayPhotos);
@@ -66,14 +75,17 @@
 </script>
 
 </head>
-<body>
-
-	<form method='post' action='/send' name='picsend' id='picsend'>
-	</form>
+<body>	
 	<input id='searchbox'>
-	
 	<input type='button' value="Load" id='load'>
 	<hr>
+
+	<form method='post' action='/send' name='picsend' id='picsend'>
+	Correct Answer: 
+	<input id='ans' name='answer'>
+	To: 
+	<input id='send' name='friend'>
+	</form>
 	
   	<p id="intro">Here are some photos of <span id="searchterm"></span>:</p> <ul id="photos"></ul>
 </body>
