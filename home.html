@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<style>
-.pic{
-	width: 250px;
-	height: 250px;
-	margin: 5px;
-}
-</style>
-
+<link rel="stylesheet" type="text/css" href="/css/home.css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-
 <script>
 	var AddPhoto = function(photo) {
 	  $("#photos").append("<img class='pic' onclick='SendImg(this.src)' src=\"" + GetFlickrUrl(photo) + "\">");
@@ -50,13 +41,14 @@
 <body>
 
 	{% for pictureObject in photoList %}
+	<div class='box'>
 		<img class='pic' src={{pictureObject.src}}>
 		<form method='post' action='/guess'>
 		<input id='guess' name='guess'>
-		<input type='hidden' name='imgKey' value={{pictureObject.key}}>
+		<input type='hidden' name='img_id' value={{pictureObject.key.id}}>
 		<button type='submit'>
 		</form>
-
+	</div>
 	{% endfor %}
 
 	
