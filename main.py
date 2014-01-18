@@ -79,24 +79,21 @@ class GuessHandler(webapp2.RequestHandler):
 
 
     def post(self):
-        guess = self.request.get('guess')
+        guess = self.request.get('guess').lower()
         image_id = int(self.request.get('img_id'))
         used_image = ImageEvent.get_by_id(image_id)
         answer = used_image.answer
-
-        if answer == guess
-            or answer == guess + 's'
-            or answer + 's' == guess
-            or answer == guess + 'ing':
-            or answer + 'ing' == guess
-            
-            used_image.key().delete()
-            userData = getUser()
-            userData.score += 1
+        possible_answers = [answer, answer[:-3], answer[:-1], answer + 's', answer + 'ing']
+        logging.info(answer)
+        logging.info(guess)
+        if guess in possible_answers:
+            used_image.key.delete()
+            userData = getUser(users.get_current_user())
+            userData.points += 1
             userData.put()
 
-        else:
-            self.redirect('/')
+        
+        self.redirect('/')
 
 routes = [
     ('/', HomeHandler),
