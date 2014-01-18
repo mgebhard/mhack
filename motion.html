@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+<script>
+
+	var x_cord = 100;
+	var y_cord = 20;
+	var colors = ['#E01B5D', '#F296B5', '#A80038', '#ED5387'];
+
+	var main = function(){
+	$('#header').replaceWith("<h1> MEGAN GEBHARD</h1>");
+	if (window.DeviceOrientationEvent) {
+		//Beta is rotation around the x-axis aka height up/down
+		//Gamma is rotation around the y-axis aka width left/right
+	    window.addEventListener("deviceorientation", function () {tilt([event.beta, event.gamma]);}, true);
+	} 
+	else if (window.DeviceMotionEvent) {
+	    window.addEventListener('devicemotion', function () {tilt([event.acceleration.x * 2, event.acceleration.y * 2], event.acceleration.z * 2);}, true);
+	} 
+	else {
+	    window.addEventListener("MozOrientation", function () {tilt([orientation.x * 50, orientation.y * 50]);}, true);
+	}
+};
+
+
+var tilt = function(directions){
+	var x = directions[0];
+	var y = directions[1];
+	
+	if (Math.abs(x) > 2 || Math.abs(y) > 2){
+		console.log(directions);
+		var canvas = document.getElementById('myCanvas');
+		var ctx = canvas.getContext("2d");
+		x_cord = x_cord + x;
+		y_cord = y_cord + y;
+		if (x_cord<0 || y_cord<0){
+			x_cord = x_cord - x;
+			y_cord = y_cord - y;
+		}
+		if (x_cord < canvas.height && y_cord<canvas.width){
+			console.log('draw');
+			console.log(canvas.width, canvas.height)
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.beginPath();
+			ctx.fillStyle ='#'+(Math.random()*0xFFFFFF<<0).toString(16);
+			ctx.arc(y_cord, x_cord, 20, 0, Math.PI * 2, true);
+			ctx.fill();
+			ctx.closePath();
+		}
+
+		else{
+			x_cord -= x;
+			y_cord -= y;
+		}
+
+		console.log(a, b);
+	}
+};
+
+
+
+$(document).ready(main);
+
+</script>
+
+</head>
+
+<body>
+	<div id='container'>
+		<div id='header'>
+		</div>
+
+		<hr/>
+
+		<canvas id="myCanvas" width='1500' height='300' style="border:1px solid black;"></canvas>
+
+		<div class='content'>
+			<h3>Megan</h3>
+		</div>
+
+
+		<div id='footer'>
+			
+		</div>
+
+	</div>
+</body>
+</html>
