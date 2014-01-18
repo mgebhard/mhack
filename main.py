@@ -80,8 +80,8 @@ class GuessHandler(webapp2.RequestHandler):
 
     def post(self):
         guess = self.request.get('guess')
-        image_key = self.request.get('imgKey')
-        used_image = ImageEvent.query().filter(ImageEvent.key==image_key).get()
+        image_id = int(self.request.get('img_id'))
+        used_image = ImageEvent.get_by_id(image_id)
         answer = used_image.answer
 
         if answer == guess:
