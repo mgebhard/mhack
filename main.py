@@ -93,12 +93,18 @@ class GuessHandler(webapp2.RequestHandler):
             userData.put()
 
         
-        self.redirect('/')
+        self.redirect('/results')
+
+class ResultsHandler(webapp2.ResultsHandler):
+    def get(self):
+
+        self.response.out.write(RenderTemplate('results.html', {}))
 
 routes = [
     ('/', HomeHandler),
     ('/send', SendHandler),
     ('/guess', GuessHandler),
+    ('/results', ResultsHandler)
 
 
 ]
