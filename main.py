@@ -15,8 +15,8 @@ class User(ndb.Model):
 
 class ImageEvent(ndb.Model):
     src = ndb.StringProperty(required=True)
-    sender = ndb.ReferenceProperty(User)
-    receiver = ndb.ReferenceProperty(User)
+    sender = ndb.KeyProperty(User)
+    receiver = ndb.KeyProperty(User)
     answer = ndb.StringProperty(required=True)
 
 def RenderTemplate(template_name, values):
