@@ -13,12 +13,17 @@ class ImageEvent(ndb.Model):
     photo = ndb.StringProperty(required=True)
     sender = ndb.UserProperty(required=True)
     reciever = ndb.UserProperty(required=True)
-    answer = ndb.UserProperty(required=True)
+    answer = ndb.StringProperty(required=True)
 
 
 def RenderTemplate(template_name, values):
     template = jinja_environment.get_template(template_name)
     return template.render(values)
+
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.out.write(RenderTemplate('home2.html', {}))
+
 
 class SendHandler(webapp2.RequestHandler):
     def get(self):
@@ -34,6 +39,14 @@ class SendHandler(webapp2.RequestHandler):
                                friend=friend, 
                                photo=src)
         pic_event.put()
+        self.redirect('/')
+
+class GuessHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.out.write(RenderTemplate('home2.html', {}))
+
+
+    def post(self):
         self.redirect('/')
 
 routes = [
