@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Megan Gebhard</title>
+	<link rel="stylesheet" type="text/css" href="box.css">
+	<link rel="stylesheet" type="text/css" href="nav.css">
+	
+	<link href='http://fonts.googleapis.com/css?family=Englebert' rel='stylesheet' type='text/css'>
+
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox -->
+	<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+	<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
+</head>
+<body>
+	<div id='container'>
+		
+		<div id='header'>
+
+		</div>
+
+
+		<div id='content'>
+		    <form id='lecture' method='post' action='/'>
+				<span class='input_title'><label>Search: </label></span>
+				<input id='class' class='tweet' type='text' name='word'>
+				<button type='submit'>Go</button>
+			</form>
+
+			<br>
+			<img src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=2&size=1800x400&sensor=false">
+<!-- 
+		<div class='box right'>
+			<div class='bar'>
+				<span class='head'>MIT ChitChat</span>
+			</div>
+			<a class="fancybox fancybox.iframe" href="mitchitchat.html">
+			<img class='clickable' src='cc.jpg'>
+			</a>
+		</div>
+ -->
+
+		<div id='footer'>
+		</div>
+
+	</div>
+</body>
+</html>

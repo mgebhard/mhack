@@ -35,6 +35,8 @@ class HomeHandler(webapp2.RequestHandler):
         self.response.out.write(RenderTemplate('home.html', {}))
     
     def post(self):
+        word = self.request.get('word')
+        # query request the stream api
         self.response.out.write(RenderTemplate('home.html', {}))
 
 
@@ -45,7 +47,6 @@ class HomeHandler(webapp2.RequestHandler):
 #     def post(self):
 #         if self.request.get('pwd') == 'cseMIT17':
             
-#             date = self.request.get('date')
 #             dt = datetime.strptime(date, '%Y-%m-%d')
 #             secret = False
 
