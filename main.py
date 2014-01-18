@@ -11,7 +11,7 @@ jinja_environment = jinja2.Environment(loader=
 
 class User(ndb.Model):
     user = ndb.UserProperty(required=True)
-    points = ndb.IntegerProprty(required=False)
+    points = ndb.IntegerProperty(required=False)
 
 class ImageEvent(ndb.Model):
     src = ndb.StringProperty(required=True)
