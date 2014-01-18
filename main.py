@@ -4,6 +4,7 @@ import urllib2
 import logging
 import os
 from google.appengine.ext import ndb
+from google.appengine.api import users
 
 jinja_environment = jinja2.Environment(loader=
     jinja2.FileSystemLoader(os.path.dirname(__file__)))
