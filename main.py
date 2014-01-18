@@ -85,7 +85,7 @@ class GuessHandler(webapp2.RequestHandler):
         answer = used_image.answer
 
         if answer == guess:
-            used_image.key().delete()
+            used_image.key.delete()
         else:
             self.redirect('/')
 

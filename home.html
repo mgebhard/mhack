@@ -45,7 +45,7 @@
 		<img class='pic' src={{pictureObject.src}}>
 		<form method='post' action='/guess'>
 		<input id='guess' name='guess'>
-		<input type='hidden' name='img_id' value={{pictureObject.key.id}}>
+		<input type='hidden' name='img_id' value={{pictureObject.key.id()}}>
 		<button type='submit'>
 		</form>
 	</div>
