@@ -40,7 +40,6 @@
     }
 
 	var Main = function() {
-		$('#load').click(FetchAndDisplayPhotos);
 		$('#intro').hide();
 	};
   
@@ -52,8 +51,12 @@
 
 	{% for pictureObject in photoList %}
 		<img class='pic' src={{pictureObject.src}}>
-		<input id='guess' value='guess'>
-		<input type='button'>
+		<form method='post' action='/guess'>
+		<input id='guess' name='guess'>
+		<input type='hidden' name='imgKey' value={{pictureObject.key}}>
+		<button type='submit'>
+		</form>
+
 	{% endfor %}
 
 	
