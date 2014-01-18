@@ -56,7 +56,7 @@ class SendHandler(webapp2.RequestHandler):
 
     def post(self):
         current_user = users.get_current_user()
-        answer = self.request.get('answer')
+        answer = self.request.get('answer').lower()
         src = self.request.get('pic_src')
         userData = getUser(current_user)
         friend = users.User(self.request.get('friend'))
@@ -84,8 +84,17 @@ class GuessHandler(webapp2.RequestHandler):
         used_image = ImageEvent.get_by_id(image_id)
         answer = used_image.answer
 
-        if answer == guess:
-            used_image.key.delete()
+        if answer == guess
+            or answer == guess + 's'
+            or answer + 's' == guess
+            or answer == guess + 'ing':
+            or answer + 'ing' == guess
+            
+            used_image.key().delete()
+            userData = getUser()
+            userData.score += 1
+            userData.put()
+
         else:
             self.redirect('/')
 
