@@ -91,15 +91,14 @@ class GuessHandler(webapp2.RequestHandler):
             used_image.key.delete()
             userData.points += 1
             userData.put()
-            self.response.out.write(RenderTemplate('results.html', {'isCorrect': True, 'points': userData.points}))
+            isCorrect = True
 
         else:
-            self.response.out.write(RenderTemplate('results.html', {'isCorrect': False, 'points': userData.points}))
+            isCorrect = False
+            
+        self.response.out.write(RenderTemplate('results.html', {'isCorrect': isCorrect, 'points': userData.points}))
 
         
-        self.redirect('/results')
-
-
 routes = [
     ('/', HomeHandler),
     ('/send', SendHandler),
