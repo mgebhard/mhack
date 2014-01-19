@@ -1,47 +1,6 @@
-html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/pic/light.png');
-    background-repeat: repeat;
-    background-attachment: fixed;
-}
-
-.container{
-	padding-top: 20px;
-	width: 1120px;
-	margin: 0 auto;
-	height: 100%;
-}
-
-.header{
-	position: fixed;
-	width: 100%;
-	height: 50px;
-	background-color: #3399FF;
-	border-bottom: 3px white solid;
-	opacity: .95;
-	font-size: 22px;
-	line-height: 50px;
-	z-index: 100;
-}
-
-.rectangle{
-	position: relative;
-	display: inline-block;
-	height: 48px;
-	width: 175px;
-	color: white;
-	font-size: 24px;
-	font-family: 'Indie Flower', cursive;
-}
-#send{
+#link{
 	float: right;
 	margin-right: 20px;
-}
-#header{
-	float: left;
-	margin-left: 20px;
 }
 
 .box{
@@ -52,50 +11,14 @@ html, body {
 	margin: 10px;
 	margin-bottom: 0;
 }
-.pic{
-	width: 250px;
-	height: 250px;
-	margin: 5px;
-}
-.info{
-	position: relative;
-	padding-top: 125px;
-	padding-left: 50px;
-	height: 280px;
-	width: 100%;
-	background-image: url('/pic/layer.png');
-    background-repeat: repeat;
-    background-attachment: fixed;
-
-}
-#title{
-	font-size: 70px;
-	font-style: bold;
-	color: white;
-	font-family: 'Montserrat Alternates', sans-serif;
-}
-
-#mission{
-	margin-top: 30px;
-	font-style: italic;
-	font-family: 'Indie Flower', cursive;
-	font-size: 16px;
-	color: #3399FF;
-}
 
 #statement{
+	font-family: 'Lato', sans-serif;
 	font-size: 22px;
 	color: white;
 }
-
-a{
-	font-variant: italic;
-	color: white;
-	text-decoration: none;
-}
-
-a:hover{
-	font-variant: bold;
+.rectangle{
+	width: 175px;
 }
 
 .hide{
@@ -108,7 +31,10 @@ a:hover{
 	width: 246px;
 	height: 50px;
 }
-
+.box:hover .hide{
+	-webkit-transition: .5s ease;
+	visibility: visible;
+}
 .hide:after {
   position: absolute;
   content: "";
@@ -135,7 +61,3 @@ form button{
 }
 
 
-.box:hover .hide{
-	-webkit-transition: .5s ease;
-	visibility: visible;
-}

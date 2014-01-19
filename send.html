@@ -2,23 +2,53 @@
 <html>
 <head>
 <title> Pixel Puzzle </title>
+<link rel="shortcut icon" href="/pic/cam.ico" >
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <script src='/js/send.js'></script>
 <link rel="stylesheet" type="text/css" href="/css/send.css">
-<link rel="shortcut icon" href="/pic/cam.ico" >
+<link rel="stylesheet" type="text/css" href="/css/layout.css">
 </head>
 <body>	
-	<input id='searchbox'>
-	<input type='button' value="Load" id='load'>
-	<hr>
+	<div class='header'>
+		<div class='rectangle' id='header'>
+			Pixel Puzzle
+		</div>
 
-	<form method='post' action='/send' name='picsend' id='picsend'>
-	Correct Answer: 
-	<input id='ans' name='answer'>
-	To: 
-	<input id='send' name='friend'>
-	</form>
-	
-  	<p id="intro">Here are some photos of <span id="searchterm"></span>:</p> <ul id="photos"></ul>
+		<div class='rectangle' id='link'>
+			<a href='/'>Home</a>
+		</div>
+	</div>
+	<div class='info'>
+		<div id='statement'>
+			<span id='title'> Pixel Puzzle</span>
+				<br>
+			<span id='mission'>Connect through creativity</span>
+		</div>
+		<div id='search'>
+			<span id='big_txt'>Search:</span>
+			<p> We are bringing you Flixr's API so you can send pictures to your friends and have them guess that image!</p>
+			<input id='searchbox'>
+			<input type='button' value="Load" id='load'>
+		</div>
+	</div>
+	<div class='container'>
+		<div class='content'>
+			
+			<form method='post' action='/send' onsubmit="return validateForm(this)" name='picsend' id='picsend'>
+			Correct Answer: 
+			<input id='ans' name='answer' placeholder="Word that descripes picture">
+			<br>
+			To: 
+			<input id='send' name='friend' placeholder="Friend's email">
+			<button type='submit'>Send Picture</button>
+			</form>
+			
+		  	<p id="intro">Here are some photos of <span id="searchterm"></span>:</p> <ul id="photos"></ul>
+
+		</div>
+	</div>
 </body>
 </html>
