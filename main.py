@@ -34,9 +34,9 @@ class HomeHandler(webapp2.RequestHandler):
 
         # Create new user if not found in the db
         if not userData:
-            new_user = Account(user=current_user, 
+            userData = Account(user=current_user, 
                                 points=0)
-            new_user.put()
+            userData.put()
             self.response.out.write(RenderTemplate('home.html', {'photoList': []}))
 
         # Fetch photos
@@ -95,18 +95,11 @@ class GuessHandler(webapp2.RequestHandler):
         
         self.redirect('/results')
 
-class ResultsHandler(webapp2.ResultsHandler):
-    def get(self):
-
-        self.response.out.write(RenderTemplate('results.html', {}))
 
 routes = [
     ('/', HomeHandler),
     ('/send', SendHandler),
     ('/guess', GuessHandler),
-    ('/results', ResultsHandler)
-
-
 ]
 
 app = webapp2.WSGIApplication(routes, debug=True)
