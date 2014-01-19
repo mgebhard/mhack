@@ -83,21 +83,25 @@ class GuessHandler(webapp2.RequestHandler):
         image_id = int(self.request.get('img_id'))
         used_image = ImageEvent.get_by_id(image_id)
         answer = used_image.answer
-        possible_answers = [answer, answer[:-3], answer[:-1], answer + 's', answer + 'ing']
-        logging.info(answer)
-        logging.info(guess)
+        possible_answers = [answer, 
+                            answer[:-3], 
+                            answer[:-1], 
+                            answer + 's', 
+                            answer + 'ing']
+
         userData = getUser(users.get_current_user())
         if guess in possible_answers:
             used_image.key.delete()
             userData.points += 1
             userData.put()
-            self.response.out.write(RenderTemplate('results.html', {'isCorrect': True, 'points': userData.points}))
+            isCorrect = True
 
         else:
-            self.response.out.write(RenderTemplate('results.html', {'isCorrect': False, 'points': userData.points}))
+            isCorrect = False
 
-        
-        self.redirect('/results')
+        self.response.out.write(RenderTemplate('results.html', 
+                                              {'isCorrect': isCorrect, 
+                                               'points': userData.points}))
 
 
 routes = [

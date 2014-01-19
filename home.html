@@ -3,20 +3,27 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div class='header'>
-		<div class='rectangle'>
+		<div class='rectangle' id='header'>
 			Pixel Puzzle
 		</div>
 
-		<div class='rectangle'>
+		<div class='rectangle' id='send'>
 			<a href='/send'>Send pixelgram</a>
 		</div>
 	</div>
 
 	<div class='info'>
-	<hr>
+		<div id='statement'>
+			<span id='title'> Pixel Puzzle</span>
+				<br>
+			<span id='mission'>Connect through creativity</span>
+				<br>
+			<span id='statement'>Our goal at Pixel Puzzle is for friends to have fun by sharing pictures </span>
+		</div>
 	</div>
 
 	<div class='container'>
@@ -24,11 +31,13 @@
 	{% for pictureObject in photoList %}
 	<div class='box'>
 		<img class='pic' src={{pictureObject.src}}>
-		<form method='post' action='/guess'>
-		<input id='guess' name='guess'>
-		<input type='hidden' name='img_id' value={{pictureObject.key.id()}}>
-		<button type='submit'>Guess</button>
-		</form>
+		<div class='hide'>
+			<form method='post' action='/guess'>
+			<input id='guess' name='guess'>
+			<input type='hidden' name='img_id' value={{pictureObject.key.id()}}>
+			<button type='submit'>Guess</button>
+			</form>
+		</div>
 	</div>
 	{% endfor %}
 
