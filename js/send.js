@@ -1,3 +1,4 @@
+
 var GetFlickrUrl = function(photo) {
   return 'http://farm' + photo.farm +
          '.staticflickr.com/' + photo.server +
@@ -55,5 +56,4 @@ var Main = function() {
 	$('#intro').hide();
 };
 
-	$(document).ready(Main);
-</script>
+$(document).ready(Main);

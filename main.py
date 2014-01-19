@@ -62,7 +62,7 @@ class SendHandler(webapp2.RequestHandler):
         friend = users.User(self.request.get('friend'))
         friendData = getUser(friend)
         if not friendData:
-            friendData = Account(user=current_user, 
+            friendData = Account(user=friend, 
                                 points=0)
             friendData.put()
 

@@ -2,18 +2,19 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/css/home.css">
+<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div class='header'>
-		<div class='title'>
-			<h2>Pixel Puzzel</h2>
+		<div class='rectangle'>
+			Pixel Puzzel
 		</div>
 
-		<div class='nav'>
-			<div class='link'>
-				<a href='/send'>Send pixelgram</a>
-			</div>				
+		<div class='rectangle'>
+			<a href='/send'>Send pixelgram</a>
 		</div>
+	</div>
+	<div class='info'>
 	</div>
 
 	<div class='container'>
@@ -24,7 +25,7 @@
 		<form method='post' action='/guess'>
 		<input id='guess' name='guess'>
 		<input type='hidden' name='img_id' value={{pictureObject.key.id()}}>
-		<button type='submit'>
+		<button type='submit'>Guess</button>
 		</form>
 	</div>
 	{% endfor %}
