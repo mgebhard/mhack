@@ -103,7 +103,6 @@ class GuessHandler(webapp2.RequestHandler):
                                               {'isCorrect': isCorrect, 
                                                'points': userData.points}))
 
-
 routes = [
     ('/', HomeHandler),
     ('/send', SendHandler),
