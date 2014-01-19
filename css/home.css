@@ -9,7 +9,8 @@ html, body {
 
 .container{
 	padding-top: 20px;
-	width: 100%;
+	width: 1120px;
+	margin: 0 auto;
 	height: 100%;
 }
 
@@ -39,6 +40,7 @@ html, body {
 	margin-right: 20px;
 }
 #header{
+	float: left;
 	margin-left: 20px;
 }
 
@@ -57,9 +59,9 @@ html, body {
 }
 .info{
 	position: relative;
-	padding-top: 90px;
+	padding-top: 125px;
 	padding-left: 50px;
-	height: 300px;
+	height: 280px;
 	width: 100%;
 	background-image: url('/pic/layer.png');
     background-repeat: repeat;
@@ -93,20 +95,22 @@ a{
 }
 
 a:hover{
-font-variant: bold;
+	font-variant: bold;
 }
+
 .hide{
 	position: relative;
-	margin: 0 5px;
-	border-radius-bottom: 6px;
+	margin: 5px;
+	margin-top: -10px;
 	border: 2px #3399FF solid;
 	border-top: 0;
 	visibility: hidden;
-	width: 250px;
+	width: 246px;
 	height: 50px;
 }
 
-.hide::after {
+.hide:after {
+  position: absolute;
   content: "";
   background-color: #3399FF;
   opacity: 0.5;
@@ -114,14 +118,20 @@ font-variant: bold;
   left: 0;
   bottom: 0;
   right: 0;
-  position: absolute;
   z-index: -1;   
 }
 
 form{
 	position: relative;
-	width: 150px;
+	width: 192px;
 	margin: 0 auto;
+	padding-top: 12px;
+}
+form input{
+	width: 120px;
+}
+form button{
+	width: 60px;
 }
 
 
