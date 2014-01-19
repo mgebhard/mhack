@@ -26,6 +26,29 @@ def RenderTemplate(template_name, values):
 def getUser(usr):
     return Account.query().filter(Account.user==usr).get()
 
+def determineIdentifier(account_instance):
+    """returns a string that will identify the account reasonably
+       string chosen by this order: first name last initial,
+       first name, last name, email"""
+    if account_instance.user.user_id() != "":
+        return account_instance.user.user_id()
+    if account_instance.user.nickname() != "":
+        return account_instance.user.nickname()
+
+
+def topNPointLeaders(n):
+    """returns a list of n {identifier, points} dictionaries"""
+    topN = []
+
+    sorted_accounts = Account.query().order(-Account.points).fetch(n)
+
+    for account_instance in sorted_accounts:
+        identifier = determineIdentifier(account_instance)
+        topN.append( {'identifier': identifier, 'points': account_instance.points} )
+
+    return topN
+
+
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         # check to see if the user is a new user
@@ -99,9 +122,16 @@ class GuessHandler(webapp2.RequestHandler):
         else:
             isCorrect = False
 
+        # Grab the top point leaders to display on the leaderboard
+        num = 5
+        sorted_accounts = Account.query().order(-Account.points).fetch(num)
+        #point_leaders = topNPointLeaders(num)
+
         self.response.out.write(RenderTemplate('results.html', 
                                               {'isCorrect': isCorrect, 
-                                               'points': userData.points}))
+                                               'points': userData.points,
+                                               'sorted_accounts': sorted_accounts,
+                                               'number_of_leaders': num }))
 
 routes = [
     ('/', HomeHandler),
