@@ -12,13 +12,13 @@
     <div id="centered_results">
         {% if isCorrect %}
         <p>You are correct!</br></p>
-        <div class="image_wrapper">
-            <img class="result_image" src="http://www.simpropira.com.br/imagens/okicon.png"/>
+        <div class="image_wrapper_correct">
+            <img class="result_image_correct" src="http://www.simpropira.com.br/imagens/okicon.png"/>
         <div>
         {% else %}
         <p>You are incorrect.</br></p>
-        <div class="image_wrapper">
-            <img class="result_image" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwgqJtOz0K64-6UZBaioppusvVti-nACGGlSDVUPghI2_gP8c4"/>
+        <div class="image_wrapper_incorrect">
+            <img class="result_image_incorrect" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwgqJtOz0K64-6UZBaioppusvVti-nACGGlSDVUPghI2_gP8c4"/>
         </div>
         {% endif %}
         <p>Your score is: {{points}}</p>
