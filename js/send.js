@@ -1,4 +1,7 @@
 
+var prev_img;
+var final_src;
+
 var GetFlickrUrl = function(photo) {
   return 'http://farm' + photo.farm +
          '.staticflickr.com/' + photo.server +
@@ -6,7 +9,7 @@ var GetFlickrUrl = function(photo) {
 }
 
 var AddPhoto = function(photo) {
-  $("#photos").append("<img class='pic' onclick='SendImg(this.src)' src=\"" + GetFlickrUrl(photo) + "\">");
+  $("#photos").append("<img class='pic' onclick='HighlightImg(this)' src=\"" + GetFlickrUrl(photo) + "\">");
 };
 
 var AddAllPhotos = function(photos) {
@@ -21,6 +24,7 @@ var DisplayPhotos = function(flickrPhotos) {
 };
 
 var FetchAndDisplayPhotos = function() {
+	final_src = null;
     var term = $("#searchbox").val();
 	var flickr = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=d35f6537258f506e4f84c84a16bb13e8&format=json&jsoncallback=?";
 	var params = { "tags": term };
@@ -31,14 +35,19 @@ var FetchAndDisplayPhotos = function() {
 	$('#intro').show();
 };
 
-var SendImg = function(pic_src){
+var validateForm = function(form){
+	//Add img src to form before submit
+	if (final_src != null){
 	var input = document.createElement("input");
 	input.setAttribute("type", "hidden");
 	input.setAttribute("name", "pic_src");
-	input.setAttribute("value", pic_src);
-	var form = document.getElementById("picsend")
-	
+	input.setAttribute("value", final_src);
 	form.appendChild(input);
+	}	
+	else{
+		alert("Make sure you have a picture selected.");
+		return false;
+	}
 
 	var friend = document.getElementById('send')
 	var answer = document.getElementById('ans')
@@ -46,10 +55,21 @@ var SendImg = function(pic_src){
 		form.submit();
 	}
 	else{
-		alert("Make sure you have the To and answer filled out!");
+		alert("Make sure you have the To and answer filled out.");
+		return false;
 	}
 
 	};
+
+var HighlightImg = function(img){
+	if (prev_img != null){
+	prev_img.style.border = '0';
+	}
+	img.style.border = "2px outset #3399FF";
+
+	final_src = img.src;
+	prev_img = img;
+};
 
 var Main = function() {
 	$('#load').click(FetchAndDisplayPhotos);
