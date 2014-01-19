@@ -12,3 +12,12 @@
     width: 100px;
     height: 100px;
 }
+
+#homeButton {
+    width: 50px;
+    height: 18px;
+    padding: 2px;
+    left-margin:500px;
+    font-family: 'Monda', sans-serif;
+    font-size: 16px;
+}

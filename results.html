@@ -10,15 +10,17 @@
 <body>
 
     <div id="results">
-        {% if correct %}
+        {% if isCorrect %}
         <p>You are correct!</br></p>
         <img class="result" src="http://www.simpropira.com.br/imagens/okicon.png"/>
         {% else %}
         <p>You are incorrect.</br></p>
         <img class="result" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwgqJtOz0K64-6UZBaioppusvVti-nACGGlSDVUPghI2_gP8c4"/>
         {% endif %}
-        <p>Your score is: 23</p>
+        <p>Your score is: {{points}}</p>
     </div>
+
+    <button id="homeButton">Back</button>
 
     
     
