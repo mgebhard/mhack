@@ -38,15 +38,15 @@
 		<div class='content'>
 			
 			<form method='post' action='/send' onsubmit="return validateForm(this)" name='picsend' id='picsend'>
-			Correct Answer: 
-			<input id='ans' name='answer' placeholder="Word that descripes picture">
+			<span class='tag'>Answer: </span>
+			<input id='ans' name='answer' placeholder="Word that describes the picture">
 			<br>
-			To: 
-			<input id='send' name='friend' placeholder="Friend's email">
+			<span class='tag'>To: </span>
+			<input id='send' name='friend' placeholder="Friend's email"> <br>
 			<button type='submit'>Send Picture</button>
 			</form>
 			
-		  	<p id="intro">Here are some photos of <span id="searchterm"></span>:</p> <ul id="photos"></ul>
+		  	<p id="intro">Pictures of <span id="searchterm"></span>:</p> <ul id="photos"></ul>
 
 		</div>
 	</div>

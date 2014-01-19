@@ -26,6 +26,25 @@
 	width: 170px;
 }
 
+.tag{
+	color: black;	
+	font-family: 'Indie Flower', cursive;
+	font-size: 20px;
+}
+#intro{
+	color: black;	
+	font-family: 'Indie Flower', cursive;
+	font-size: 20px;
+}
+
+#ans{
+	width: 200px;
+}
+
+#send{
+	width: 240px;
+}
+
 #big_txt{
 	font-family: 'Indie Flower', cursive;
 	font-size: 36px;
